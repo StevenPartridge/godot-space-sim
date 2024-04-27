@@ -5,3 +5,5 @@
 [node name="Main" type="Node3D"]
 
 [node name="GridManager" parent="." instance=ExtResource("1_e2lex")]
+
+[node name="Camera3D" type="Camera3D" parent="GridManager"]

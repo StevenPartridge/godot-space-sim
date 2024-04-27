@@ -4,7 +4,7 @@ extends Node3D
 var grid_size: Vector3 = Vector3(3, 3, 3) # 3x3x3 grid
 
 # Cubie scene to instance
-var cubie_scene: PackedScene = preload("res://cubie.tscn")
+var cubie_scene: PackedScene = preload("res://cubie/cubie.tscn")
 
 func _ready():
 	generate_grid()
