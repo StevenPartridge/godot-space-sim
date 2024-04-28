@@ -16,8 +16,34 @@ script = ExtResource("1_5qvcf")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 353.808, 944.971)
 
-[node name="DevInterface" parent="." instance=ExtResource("4_7tgo2")]
-ship_path = NodePath("../GridManager/SpaceShip")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="UserInterface" parent="." instance=ExtResource("5_e1qyk")]
-ship_path = NodePath("../GridManager/SpaceShip")
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0434
+anchor_bottom = 1.0
+offset_right = -49.0
+offset_bottom = -1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="DevInterface" parent="Control/HBoxContainer" instance=ExtResource("4_7tgo2")]
+layout_mode = 2
+size_flags_horizontal = 0
+ship_path = NodePath("../../../GridManager/SpaceShip")
+
+[node name="Control" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UserInterface" parent="Control/HBoxContainer" instance=ExtResource("5_e1qyk")]
+layout_mode = 2
+size_flags_horizontal = 8
+ship_path = NodePath("../../../GridManager/SpaceShip")

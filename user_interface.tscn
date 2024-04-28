@@ -5,16 +5,15 @@
 [node name="UserInterface" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1062.0
-offset_right = 1144.0
-offset_bottom = 639.0
+offset_left = 4.0
+offset_right = 4.0
 script = ExtResource("1_gb06d")
 
 [node name="SpeedVBox" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 28.0
 offset_right = 40.0
-offset_bottom = 589.0
+offset_bottom = 561.0
+alignment = 2
 
 [node name="SpeedSlider" type="VSlider" parent="SpeedVBox"]
 layout_mode = 2
