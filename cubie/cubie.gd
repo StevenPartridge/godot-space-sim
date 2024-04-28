@@ -17,4 +17,6 @@ func switch_state(new_state: CubieState):
 	if current_state:
 		current_state.exit(self)
 	current_state = new_state
+	current_state.set_seed(1)
 	current_state.enter(self)
+	

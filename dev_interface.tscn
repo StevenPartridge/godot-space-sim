@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3yx3vbk4dwfj"]
+
+[ext_resource type="Script" path="res://dev_interface.gd" id="1_b4g06"]
+
+[node name="DevInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 372.0
+offset_bottom = 105.0
+script = ExtResource("1_b4g06")
+
+[node name="max_speed" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 300.0
+offset_bottom = 23.0
+
+[node name="max_speed_slider" type="HSlider" parent="max_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 1000.0
+value = 100.0
+
+[node name="MaxSpeedValue" type="Label" parent="max_speed"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="acceleration" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 37.0
+
+[node name="acceleration_slider" type="HSlider" parent="acceleration"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 4.0
+step = 0.1
+value = 0.6
+
+[node name="AccelerationValue" type="Label" parent="acceleration"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="pitch_speed" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 57.0
+
+[node name="pitch_speed_slider" type="HSlider" parent="pitch_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.1
+value = 1.5
+
+[node name="PitchSpeedValue" type="Label" parent="pitch_speed"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="roll_speed" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 77.0
+
+[node name="roll_speed_slider" type="HSlider" parent="roll_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 5.0
+step = 0.1
+value = 1.9
+
+[node name="RollSpeedValue" type="Label" parent="roll_speed"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="input_response" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 97.0
+
+[node name="input_response_slider" type="HSlider" parent="input_response"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 15.0
+value = 4.0
+
+[node name="InputResponseValue" type="Label" parent="input_response"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[connection signal="value_changed" from="max_speed/max_speed_slider" to="." method="_on_MaxSpeedSlider_value_changed"]
+[connection signal="value_changed" from="acceleration/acceleration_slider" to="." method="_on_AccelerationSlider_value_changed"]
+[connection signal="value_changed" from="pitch_speed/pitch_speed_slider" to="." method="_on_PitchSpeedSlider_value_changed"]
+[connection signal="value_changed" from="roll_speed/roll_speed_slider" to="." method="_on_RollSpeedSlider_value_changed"]
+[connection signal="value_changed" from="input_response/input_response_slider" to="." method="_on_InputResponseSlider_value_changed"]

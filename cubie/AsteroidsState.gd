@@ -18,22 +18,22 @@ func _init():
 		materials.append(material)
 
 func enter(cubie: Node3D):
-	var num_asteroids = randf_range(5, 20)
+	var num_asteroids = rng.randf_range(5, 20)
 	for i in range(int(num_asteroids)):
 		var sphere = SphereMesh.new()
-		var size = randf_range(10, 50)
+		var size = rng.randf_range(10, 50)
 		sphere.radius = size
 		sphere.height = size * 2
 
 		var instance = MeshInstance3D.new()
 		instance.mesh = sphere
 		instance.transform.origin = Vector3(
-			randf_range(-500 + size, 500 - size),
-			randf_range(-500 + size, 500 - size),
-			randf_range(-500 + size, 500 - size)
+			rng.randf_range(-500 + size, 500 - size),
+			rng.randf_range(-500 + size, 500 - size),
+			rng.randf_range(-500 + size, 500 - size)
 		)
 
-		instance.material_override = materials[randi() % materials.size()]
+		instance.material_override = materials[rng.randi() % materials.size()]
 
 		cubie.add_child(instance)
 

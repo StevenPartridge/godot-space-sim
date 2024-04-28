@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://d1svvhjrmc37m" path="res://assets/textures/500megapack/coffeestain.jpg" id="2_xi0ro"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mbik4"]
-size = Vector3(75, 10, 25)
+size = Vector3(40, 5, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xklsa"]
 albedo_texture = ExtResource("2_xi0ro")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ypcn3"]
 material = SubResource("StandardMaterial3D_xklsa")
-size = Vector3(75, 10, 25)
+size = Vector3(40, 5, 15)
 
 [node name="SpaceShip" type="CharacterBody3D"]
 motion_mode = 1
@@ -22,9 +22,9 @@ transform = Transform3D(-4.37114e-08, 1.09081e-15, 1, 2.49548e-08, 1, 0, -1, 2.4
 shape = SubResource("BoxShape3D_mbik4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1.09081e-15, 1, 2.49548e-08, 1, 0, -1, 2.49548e-08, -4.37114e-08, 0, -11.3482, -22.8825)
+transform = Transform3D(-4.37114e-08, 1.09081e-15, 1, 2.49548e-08, 1, 0, -1, 2.49548e-08, -4.37114e-08, 0, -2.92959, 15.1683)
 mesh = SubResource("BoxMesh_ypcn3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.25, 32.1215)
-near = 0.204
+far = 12000.0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbmoka8b33trb"]
+[gd_scene load_steps=6 format=3 uid="uid://cbmoka8b33trb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5qvcf"]
 [ext_resource type="PackedScene" uid="uid://dc4br648j7fl5" path="res://grid_manager.tscn" id="1_e2lex"]
 [ext_resource type="PackedScene" uid="uid://c1dfp6cqu6ins" path="res://space_ship.tscn" id="3_5y2mv"]
+[ext_resource type="PackedScene" uid="uid://d3yx3vbk4dwfj" path="res://dev_interface.tscn" id="4_7tgo2"]
+[ext_resource type="PackedScene" uid="uid://chlhnweysi272" path="res://user_interface.tscn" id="5_e1qyk"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_5qvcf")
@@ -10,3 +12,12 @@ script = ExtResource("1_5qvcf")
 [node name="GridManager" parent="." instance=ExtResource("1_e2lex")]
 
 [node name="SpaceShip" parent="GridManager" instance=ExtResource("3_5y2mv")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 353.808, 944.971)
+
+[node name="DevInterface" parent="." instance=ExtResource("4_7tgo2")]
+ship_path = NodePath("../GridManager/SpaceShip")
+
+[node name="UserInterface" parent="." instance=ExtResource("5_e1qyk")]
+ship_path = NodePath("../GridManager/SpaceShip")

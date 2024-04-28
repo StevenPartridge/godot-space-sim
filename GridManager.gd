@@ -15,5 +15,5 @@ func generate_grid():
 			for z in range(int(grid_size.z)):
 				var cubie = cubie_scene.instantiate()
 				add_child(cubie)
-				cubie.global_transform.origin = Vector3(x, y, z) * 1000
+				cubie.global_transform.origin = Vector3(x, y, z) * 2000
 				cubie.randomize_content()
