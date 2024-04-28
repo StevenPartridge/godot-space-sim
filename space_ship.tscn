@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1dfp6cqu6ins"]
+
+[ext_resource type="Script" path="res://SpaceShip.gd" id="1_gt580"]
+[ext_resource type="Texture2D" uid="uid://d1svvhjrmc37m" path="res://assets/textures/500megapack/coffeestain.jpg" id="2_xi0ro"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mbik4"]
+size = Vector3(75, 10, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xklsa"]
+albedo_texture = ExtResource("2_xi0ro")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ypcn3"]
+material = SubResource("StandardMaterial3D_xklsa")
+size = Vector3(75, 10, 25)
+
+[node name="SpaceShip" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_gt580")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1.09081e-15, 1, 2.49548e-08, 1, 0, -1, 2.49548e-08, -4.37114e-08, 0, -11.3482, 9)
+shape = SubResource("BoxShape3D_mbik4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1.09081e-15, 1, 2.49548e-08, 1, 0, -1, 2.49548e-08, -4.37114e-08, 0, -11.3482, 9)
+mesh = SubResource("BoxMesh_ypcn3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.25, 64.004)
