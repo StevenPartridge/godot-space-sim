@@ -64,6 +64,9 @@ extends CharacterBody3D
 @export var acceleration = 0.6
 @export var pitch_speed = 1.5
 @export var roll_speed = 1.9
+@export var yaw_speed = 1.9
+@export var drift_transition = 1.0
+var rotation_multiplier = 1.0
 @export var input_response = 0.8
 
 var forward_speed = 0.0
@@ -71,14 +74,30 @@ var pitch_input = 0.0
 var roll_input = 0.0
 var yaw_input = 0.0
 var target_velocity = Vector3.ZERO
+var time_passed = 0.0
 
 func get_input(delta):
-	# Calculate target forward velocity based on current orientation and input
 	var forward_dir = -transform.basis.z
 	var target_speed = max_speed * speed_input
-	if !Input.is_action_pressed("drift"):
-		target_velocity = forward_dir * target_speed
 
+	if Input.is_action_pressed("drift"):
+		time_passed += delta
+		if time_passed < drift_transition:
+			rotation_multiplier = lerp(1.0, 2.0, time_passed / drift_transition)
+		else:
+			rotation_multiplier = 2.0
+	else:
+		if time_passed > drift_transition:
+			time_passed = drift_transition
+		else:
+			time_passed -= delta
+		target_velocity = forward_dir * target_speed
+		if time_passed > 0.0:
+			rotation_multiplier = lerp(1.0, 2.0, time_passed / drift_transition)
+		else:
+			rotation_multiplier = 1.0
+			time_passed = 0.0
+	print(rotation_multiplier)
 	# Pitch, roll, and yaw inputs
 	pitch_input = adjust_input("pitch_down", "pitch_up", pitch_input, delta)
 	roll_input = adjust_input("roll_right", "roll_left", roll_input, delta)
@@ -96,9 +115,9 @@ func _physics_process(delta):
 	get_input(delta)
 
 	# Rotate based on input
-	transform.basis = transform.basis.rotated(transform.basis.z, roll_input * roll_speed * delta)
-	transform.basis = transform.basis.rotated(transform.basis.x, pitch_input * pitch_speed * delta)
-	transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * roll_speed * delta)
+	transform.basis = transform.basis.rotated(transform.basis.z, roll_input * (roll_speed * rotation_multiplier) * delta)
+	transform.basis = transform.basis.rotated(transform.basis.x, pitch_input * (pitch_speed * rotation_multiplier) * delta)
+	transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * (yaw_speed * rotation_multiplier) * delta)
 	transform.basis = transform.basis.orthonormalized()
 
 	# Update velocity towards target velocity
